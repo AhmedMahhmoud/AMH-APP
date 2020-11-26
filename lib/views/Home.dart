@@ -108,12 +108,15 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10.0),
                             ),
-                            child: Align(
-                              alignment: Alignment.topRight,
+                            child: Padding(
+                              padding: EdgeInsets.all(10),
                               child: Text(
-                                "التأسيس عام 2007 كشركة للمقاولات والتوريدات العامة تخصصت في اعمال  (التسويات و الحفر والقطع وأعمال الطرق والرصف أعمال البنية التحتية.اعمال المقاولات العامة والتوريدات العمومية )",
+                                " الجودة العالية والحلول الإبداعية, المرونة في التنفيذ والتطوير المستمر, .حلول فعالة وذكية للمشاريع المعقدة ,الحفاظ علي ثقة العملاء، ضمان استمرارية التواصل وخدمة ما بعد البيع. هدفنا ان نكون سويا على القمة",
+                                textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    letterSpacing: 1, color: Colors.white),
+                                    letterSpacing: 1,
+                                    fontWeight: FontWeight.w300,
+                                    color: Colors.deepOrange),
                               ),
                             ),
                           ),

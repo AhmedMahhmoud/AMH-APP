@@ -1,8 +1,10 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_proj/views/ContactusScreen.dart';
 import 'package:flutter_proj/views/ourCompanies.dart';
-import 'package:flutter_proj/views/testpage.dart';
+import 'package:flutter_proj/views/Partners.dart';
+import 'package:flutter_proj/views/whoarewe.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'Home.dart';
@@ -41,10 +43,10 @@ class _MyHomePageState extends State<MyHomePage> {
   var current = 0;
   List<Widget> _screens = [
     Home(),
+    OurCompaniesScreen(),
+    WhoAreWe(),
+    Partners(),
     ContactUsScreen(),
-    Test(),
-    Test(),
-    OurCompaniesScreen()
   ];
   @override
   Widget build(BuildContext context) {
@@ -110,11 +112,14 @@ class InfoCards extends StatelessWidget {
           cardname,
           style: TextStyle(color: Color(0xffDA3444), fontSize: 18),
         ),
-        Align(
-          alignment: Alignment.topRight,
+        Padding(
+          padding: EdgeInsets.all(3),
           child: Text(
             cardinfo,
-            style: TextStyle(height: 2, color: Colors.white),
+            style: TextStyle(
+              height: 2,
+              color: Colors.white,
+            ),
             textAlign: TextAlign.right,
           ),
         )
