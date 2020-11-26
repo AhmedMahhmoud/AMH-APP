@@ -90,6 +90,7 @@ class ContactUsScreen extends StatelessWidget {
                             SizedBox(
                               height: 10.0,
                             ),
+
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
