@@ -38,12 +38,14 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   ];
   @override
   void initState() {
-    _animationController = AnimationController(
-        vsync: this, duration: Duration(seconds: 1), lowerBound: 0);
 
-    _animationController.forward();
+
+
     // TODO: implement initState
     super.initState();
+    _animationController = AnimationController(
+        duration: Duration(seconds: 1),vsync: this ,lowerBound: 0);
+    _animationController.forward();
   }
 
   @override
