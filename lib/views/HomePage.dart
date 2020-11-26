@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_proj/views/ContactusScreen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -49,6 +50,11 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Text("Launch in app"),
               onPressed: () {
                 _lunchInAPP(_launchURL);
+              },
+            ),RaisedButton(
+              child: Text("contactus"),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (Context) => ContactUsScreen() ));
               },
             )
           ],
