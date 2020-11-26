@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_proj/views/ContactusScreen.dart';
+import 'package:flutter_proj/views/ourCompanies.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -55,6 +56,11 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Text("contactus"),
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (Context) => ContactUsScreen() ));
+              },
+            ),RaisedButton(
+              child: Text("ourcompaines"),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (Context) => OurCompaniesScreen() ));
               },
             )
           ],

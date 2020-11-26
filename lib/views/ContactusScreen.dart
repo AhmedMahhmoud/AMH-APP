@@ -23,8 +23,9 @@ class ContactUsScreen extends StatelessWidget {
                           child: Column(children: <Widget>[
                             CircleAvatar(
                               radius: 50.0,
-                              backgroundImage:
-                              AssetImage('resources/logo.jpeg'),
+                              backgroundColor: Colors.black,
+                              child:Image(image: AssetImage('resources/group.png'),)
+                              ,
                             ),
                             Text(
                               'اتصل بنا',
