@@ -1,17 +1,18 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_proj/views/Home.dart';
+import 'package:flutter_proj/views/ContactusScreen.dart';
+import 'package:flutter_proj/views/ourCompanies.dart';
 import 'package:flutter_proj/views/testpage.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import 'Home.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage>
-     {
-  
+class _MyHomePageState extends State<MyHomePage> {
   // Future<void> _launched;
   // String phone = "";
   // String _launchURL = "https://www.google.com";
@@ -38,7 +39,13 @@ class _MyHomePageState extends State<MyHomePage>
   // }
 
   var current = 0;
-  List<Widget> _screens = [Home(), Test()];
+  List<Widget> _screens = [
+    Home(),
+    ContactUsScreen(),
+    Test(),
+    Test(),
+    OurCompaniesScreen()
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

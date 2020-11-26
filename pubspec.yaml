@@ -32,6 +32,8 @@ dependencies:
   flutter_swiper: ^1.1.6  
   youtube_player_flutter: ^7.0.0+7
   curved_navigation_bar: ^0.3.4
+  typicons_flutter: ^0.3.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -47,11 +49,13 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  
+    
 
   # To add assets to your application, add an assets section, like this:
   assets:
     - lib/assets/images/
-  
+    - resources/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
