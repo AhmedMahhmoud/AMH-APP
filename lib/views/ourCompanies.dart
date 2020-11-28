@@ -1,5 +1,32 @@
 import 'package:flutter/material.dart';
 
+int currentIndex = -1;
+
+AnimationController _controller1;
+AnimationController _controller2;
+AnimationController _controller3;
+AnimationController _controller4;
+AnimationController _controller5;
+
+List<UnitAnimationController> controllers = [
+  UnitAnimationController(
+      animationController: _controller1, animationHeight: 0),
+  UnitAnimationController(
+      animationController: _controller2, animationHeight: 0),
+  UnitAnimationController(
+      animationController: _controller3, animationHeight: 0),
+  UnitAnimationController(
+      animationController: _controller4, animationHeight: 0),
+  UnitAnimationController(
+      animationController: _controller5, animationHeight: 0),
+];
+
+class UnitAnimationController {
+  AnimationController animationController;
+  double animationHeight;
+  UnitAnimationController({this.animationController, this.animationHeight});
+}
+
 class OurCompaniesScreen extends StatefulWidget {
   @override
   _OurCompaniesScreenState createState() => _OurCompaniesScreenState();
@@ -13,6 +40,7 @@ class _OurCompaniesScreenState extends State<OurCompaniesScreen> {
       word:
           "جميع أعمال الحفر والتسويات والمحاجر .أعمال البناء والتشطيبات والديكور .أعمال الطرق والرصف",
       color: 0xff9E1B22,
+      index: 0,
     ),
     RoundedSlidable(
       name: "التكنولوجيا",
@@ -20,6 +48,7 @@ class _OurCompaniesScreenState extends State<OurCompaniesScreen> {
       color: 0xff446EB4,
       word:
           "تصميم وتنفيذ الحلول الذكية المتكاملة بما تشمله من تصميم للبرمجيات والدوائر الالكترونية لتقديم كافة الحلول المطلوبة لإدارة جميع أنواع الاعمال للشركات والمؤسسات ",
+      index: 1,
     ),
     RoundedSlidable(
       name: "الإستشارات المالية",
@@ -27,6 +56,7 @@ class _OurCompaniesScreenState extends State<OurCompaniesScreen> {
       color: 0xffD7BC28,
       word:
           "جميع الإستشارات الأمنية والمالية للشركات والمؤسسات وتنفيذ الأنظمة الأمنية وخدمات نقل الأموال",
+      index: 2,
     ),
     RoundedSlidable(
       name: "الإستشارات الأمنية ونقل الأموال",
@@ -34,6 +64,7 @@ class _OurCompaniesScreenState extends State<OurCompaniesScreen> {
       color: 0xffC48155,
       word:
           "جميع الإستشارات الأمنية والمالية للشركات والمؤسسات وتنفيذ الأنظمة الأمنية وخدمات نقل الأموال",
+      index: 3,
     ),
     RoundedSlidable(
       name: "النشاط الرياضي",
@@ -41,8 +72,20 @@ class _OurCompaniesScreenState extends State<OurCompaniesScreen> {
       color: 0xff3BAFAC,
       word:
           "ندير أكاديمية رياضية تتبني المواهب الرياضية معنا افضل المدربين والإمكانيات للوصول باللاعبين الي الاحتراف.",
+      index: 4,
     ),
   ];
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _controller1.dispose();
+    _controller2.dispose();
+    _controller3.dispose();
+    _controller4.dispose();
+    _controller5.dispose();
+
+    super.dispose();
+  }
 
   @override
   @override
@@ -63,9 +106,12 @@ class _OurCompaniesScreenState extends State<OurCompaniesScreen> {
             child: ListView.builder(
               itemCount: widgets.length,
               itemBuilder: (context, index) {
-                return Center(child: widgets[index]);
+                return widgets[index];
               },
             ),
+            // child: ListView(
+            //   children: widgets,
+            // ),
           ),
         ));
   }
@@ -76,7 +122,8 @@ class RoundedSlidable extends StatefulWidget {
   final imgPath;
   final word;
   final color;
-  RoundedSlidable({this.name, this.imgPath, this.word, this.color});
+  final index;
+  RoundedSlidable({this.name, this.imgPath, this.word, this.color, this.index});
 
   @override
   _RoundedSlidableState createState() => _RoundedSlidableState();
@@ -84,43 +131,45 @@ class RoundedSlidable extends StatefulWidget {
 
 class _RoundedSlidableState extends State<RoundedSlidable>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  double animationHeight = 0;
-  bool onTap = false;
   @override
   void initState() {
     // TODO: implement initState
-    _controller = AnimationController(
+    controllers[widget.index].animationController = AnimationController(
         vsync: this, duration: Duration(seconds: 1), lowerBound: 0);
   }
 
-  @override
   void dispose() {
     // TODO: implement dispose
-    _controller.dispose();
+    controllers[widget.index].animationController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: _controller,
+      animation: controllers[widget.index].animationController,
       builder: (context, child) {
         return GestureDetector(
           onTap: () {
-            setState(() {
-              animationHeight != 100.0
-                  ? animationHeight = 100.0
-                  : animationHeight = 0.0;
-              onTap = !onTap;
-            });
-            if (onTap) {
-              _controller.forward(from: 0);
+            if (currentIndex == -1) {
+              setState(() {
+                controllers[widget.index].animationController.forward(from: 0);
+                controllers[widget.index].animationHeight = 100;
+                currentIndex = widget.index;
+              });
             } else {
-              _controller.reverse(from: 1);
+              if (currentIndex == widget.index) {
+                controllers[currentIndex].animationController.reverse(from: 1);
+                controllers[currentIndex].animationHeight = 0;
+                currentIndex = -1;
+              } else {
+                controllers[currentIndex].animationController.reverse(from: 1);
+                controllers[currentIndex].animationHeight = 0;
+                controllers[widget.index].animationController.forward(from: 0);
+                controllers[widget.index].animationHeight = 100;
+                currentIndex = widget.index;
+              }
             }
-
-            print(_controller.value);
           },
           child: SingleChildScrollView(
             child: Column(
@@ -132,7 +181,11 @@ class _RoundedSlidableState extends State<RoundedSlidable>
                           bottom: 15, top: 15.0, left: 20.0, right: 15.0),
                       child: Container(
                         width: 500,
-                        height: 100 + (_controller.value * 100),
+                        height: 100 +
+                            (controllers[widget.index]
+                                    .animationController
+                                    .value *
+                                100),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           boxShadow: [
@@ -164,14 +217,17 @@ class _RoundedSlidableState extends State<RoundedSlidable>
                               new AnimatedContainer(
                                 duration: const Duration(seconds: 1),
                                 child: Opacity(
-                                  opacity: _controller.value,
+                                  opacity: controllers[widget.index]
+                                      .animationController
+                                      .value,
                                   child: new Text(
                                     widget.word,
                                     textAlign: TextAlign.right,
                                     style: TextStyle(fontSize: 16),
                                   ),
                                 ),
-                                height: animationHeight,
+                                height:
+                                    controllers[widget.index].animationHeight,
                                 width: 200.0,
                               ),
                             ],
