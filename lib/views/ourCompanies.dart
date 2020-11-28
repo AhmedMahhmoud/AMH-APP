@@ -12,28 +12,33 @@ class _OurCompaniesScreenState extends State<OurCompaniesScreen> {
       imgPath: "resources/2.png",
       word:
           "جميع أعمال الحفر والتسويات والمحاجر .أعمال البناء والتشطيبات والديكور .أعمال الطرق والرصف",
+      color: 0xff9E1B22,
     ),
     RoundedSlidable(
       name: "التكنولوجيا",
       imgPath: "resources/1.png",
+      color: 0xff446EB4,
       word:
           "تصميم وتنفيذ الحلول الذكية المتكاملة بما تشمله من تصميم للبرمجيات والدوائر الالكترونية لتقديم كافة الحلول المطلوبة لإدارة جميع أنواع الاعمال للشركات والمؤسسات ",
     ),
     RoundedSlidable(
       name: "الإستشارات المالية",
       imgPath: "resources/3.png",
+      color: 0xffD7BC28,
       word:
           "جميع الإستشارات الأمنية والمالية للشركات والمؤسسات وتنفيذ الأنظمة الأمنية وخدمات نقل الأموال",
     ),
     RoundedSlidable(
       name: "الإستشارات الأمنية ونقل الأموال",
       imgPath: "resources/4.png",
+      color: 0xffC48155,
       word:
           "جميع الإستشارات الأمنية والمالية للشركات والمؤسسات وتنفيذ الأنظمة الأمنية وخدمات نقل الأموال",
     ),
     RoundedSlidable(
       name: "النشاط الرياضي",
       imgPath: "resources/5.png",
+      color: 0xff3BAFAC,
       word:
           "ندير أكاديمية رياضية تتبني المواهب الرياضية معنا افضل المدربين والإمكانيات للوصول باللاعبين الي الاحتراف.",
     ),
@@ -43,6 +48,13 @@ class _OurCompaniesScreenState extends State<OurCompaniesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Color(0xffD05028),
+          title: Align(
+            child: Text("الشركات التابعة"),
+            alignment: Alignment.topRight,
+          ),
+        ),
         backgroundColor: Colors.black,
         body: Container(
           height: (MediaQuery.of(context).size.height),
@@ -63,7 +75,8 @@ class RoundedSlidable extends StatefulWidget {
   final name;
   final imgPath;
   final word;
-  RoundedSlidable({this.name, this.imgPath, this.word});
+  final color;
+  RoundedSlidable({this.name, this.imgPath, this.word, this.color});
 
   @override
   _RoundedSlidableState createState() => _RoundedSlidableState();
@@ -100,7 +113,7 @@ class _RoundedSlidableState extends State<RoundedSlidable> {
                             blurRadius: 20,
                             offset: Offset(0, -2))
                       ],
-                      borderRadius: BorderRadius.circular(50.0),
+                      borderRadius: BorderRadius.circular(40),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.only(right: 50),
@@ -112,7 +125,12 @@ class _RoundedSlidableState extends State<RoundedSlidable> {
                             alignment: Alignment.centerRight,
                             child: Text(
                               widget.name,
-                              style: kSlidableTextStyle,
+                              style: TextStyle(
+                                  color: Color(
+                                    widget.color,
+                                  ),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700),
                             ),
                           ),
                           new AnimatedContainer(
@@ -137,14 +155,23 @@ class _RoundedSlidableState extends State<RoundedSlidable> {
                     width: 100,
                     height: 100,
                     decoration: const ShapeDecoration(shape: CircleBorder()),
-                    child: Center(
-                        child: CircleAvatar(
-                      backgroundImage: AssetImage(widget.imgPath),
-                      backgroundColor: Colors.black,
-                      radius: 50,
-                    )),
+                    child: Container(
+                        width: 100,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          color: Color(0xff4a4a4a),
+                          borderRadius: BorderRadius.circular(100),
+                          border:
+                              Border.all(width: 1, color: Color(widget.color)),
+                        ),
+                        child: Center(
+                            child: CircleAvatar(
+                          backgroundImage: AssetImage(widget.imgPath),
+                          backgroundColor: Colors.white,
+                          radius: 50,
+                        ))),
                   ),
-                )
+                ),
               ],
             ),
           ],
@@ -153,5 +180,3 @@ class _RoundedSlidableState extends State<RoundedSlidable> {
     );
   }
 }
-
-const kSlidableTextStyle = TextStyle(fontSize: 20, fontWeight: FontWeight.w700);

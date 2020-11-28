@@ -29,54 +29,58 @@ class WhoAreWe extends StatelessWidget {
           alignment: Alignment.bottomRight,
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(4.0),
-        child: Column(
-          children: [
-            Expanded(
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: 250,
-                child: Swiper(
-                  itemCount: 2,
-                  autoplay: true,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return words[index];
-                  },
+      body: SingleChildScrollView(
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Column(
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 250,
+                  child: Swiper(
+                    itemCount: 2,
+                    autoplay: true,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return words[index];
+                    },
+                  ),
                 ),
-              ),
-            ),
-            Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              color: Colors.grey.withOpacity(0.2),
-              child: Padding(
-                padding: EdgeInsets.all(15),
-                child: Text(
-                  "التأسيس عام 2007 كشركة للمقاولات والتوريدات العامة تخصصت في اعمال (التسويات و الحفر والقطع وأعمال الطرق والرصف أعمال البنية التحتية .اعمال المقاولات العامة والتوريدات العمومية )",
-                  style: TextStyle(
-                      color: Colors.white, fontSize: 16, letterSpacing: 1),
-                  textAlign: TextAlign.right,
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  color: Colors.grey.withOpacity(0.2),
+                  child: Padding(
+                    padding: EdgeInsets.all(15),
+                    child: Text(
+                      "التأسيس عام 2007 كشركة للمقاولات والتوريدات العامة تخصصت في اعمال (التسويات و الحفر والقطع وأعمال الطرق والرصف أعمال البنية التحتية .اعمال المقاولات العامة والتوريدات العمومية )",
+                      style: TextStyle(
+                          color: Colors.white, fontSize: 14, letterSpacing: 1),
+                      textAlign: TextAlign.right,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            Card(
-              color: Colors.grey.withOpacity(0.2),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0)),
-              child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Text(
-                  "ثم توسعت حجم ألاعمال فتم إنشاء باقي الشركات بالتتابع ليتم التوسع في النشاط ويشمل توريد وتركيب الأنظمة الأمنية . أعمال التشطيبات . تحلية المياة . الأستشارات المالية . الأستشارات الأمنية ونقل الأموال .توريد وتركيب الأنظمه الذكية . الحلول التقنية والبرمجيات وأخيرا الأنشطة الرياضية",
-                  style: TextStyle(
-                      color: Colors.white, fontSize: 16, letterSpacing: 1),
-                  textAlign: TextAlign.right,
+                Card(
+                  color: Colors.grey.withOpacity(0.2),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Text(
+                      "ثم توسعت حجم ألاعمال فتم إنشاء باقي الشركات بالتتابع ليتم التوسع في النشاط ويشمل توريد وتركيب الأنظمة الأمنية . أعمال التشطيبات . تحلية المياة . الأستشارات المالية . الأستشارات الأمنية ونقل الأموال .توريد وتركيب الأنظمه الذكية . الحلول التقنية والبرمجيات وأخيرا الأنشطة الرياضية",
+                      style: TextStyle(
+                          color: Colors.white, fontSize: 16, letterSpacing: 1),
+                      textAlign: TextAlign.right,
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

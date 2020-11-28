@@ -5,7 +5,6 @@ import 'package:flutter_proj/views/ContactusScreen.dart';
 import 'package:flutter_proj/views/ourCompanies.dart';
 import 'package:flutter_proj/views/Partners.dart';
 import 'package:flutter_proj/views/whoarewe.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import 'Home.dart';
 
@@ -15,31 +14,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  // Future<void> _launched;
-  // String phone = "";
-  // String _launchURL = "https://www.google.com";
-  // Future<void> _lunchInBrowser(String url) async {
-  //   if (await canLaunch(url)) {
-  //     await launch(url,
-  //         forceSafariVC: false,
-  //         forceWebView: false,
-  //         headers: <String, String>{"header_key": "header_value"});
-  //   } else {
-  //     throw "Could not launch $url";
-  //   }
-  // }
-
-  // Future<void> _lunchInAPP(String url) async {
-  //   if (await canLaunch(url)) {
-  //     await launch(url,
-  //         forceSafariVC: true,
-  //         forceWebView: true,
-  //         headers: <String, String>{"header_key": "header_value"});
-  //   } else {
-  //     throw "Could not launch $url";
-  //   }
-  // }
-
   var current = 0;
   List<Widget> _screens = [
     Home(),
@@ -51,6 +25,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
         backgroundColor: Colors.black45,
         bottomNavigationBar: CurvedNavigationBar(
           height: 60,

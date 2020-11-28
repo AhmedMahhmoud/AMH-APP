@@ -11,63 +11,66 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
-  YoutubePlayerController _controller;
+  YoutubePlayerController utubeController;
   AnimationController _animationController;
 
-  List<Widget> amhImages = [
-    AmhImagesWid("lib/assets/images/1.png"),
-    AmhImagesWid("lib/assets/images/2.png"),
-    AmhImagesWid("lib/assets/images/3.png"),
-    AmhImagesWid("lib/assets/images/4.png"),
-    AmhImagesWid("lib/assets/images/5.png"),
-    InkWell(
-      child: Container(
-          decoration:
-              BoxDecoration(border: Border.all(width: 1, color: Colors.white)),
-          child: YoutubePlayer(
-            showVideoProgressIndicator: true,
-            controller: YoutubePlayerController(
-              initialVideoId: "hT-UJSD9ZIk",
-              flags: YoutubePlayerFlags(
-                autoPlay: false,
-                mute: false,
-              ),
-            ),
-          )),
-    )
-  ];
   @override
   void initState() {
-    _animationController = AnimationController(
-        vsync: this, duration: Duration(seconds: 1), lowerBound: 0);
-
-    _animationController.forward();
-    // TODO: implement initState
     super.initState();
+    _animationController = AnimationController(
+        duration: Duration(seconds: 1), vsync: this, lowerBound: 0);
+    _animationController.forward();
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    utubeController.dispose();
     _animationController.dispose();
+
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    var pausePLay = true;
+    List<Widget> amhImages = [
+      GestureDetector(child: AmhImagesWid("lib/assets/images/1.png")),
+      AmhImagesWid("lib/assets/images/2.png"),
+      AmhImagesWid("lib/assets/images/3.png"),
+      AmhImagesWid("lib/assets/images/4.png"),
+      AmhImagesWid("lib/assets/images/5.png"),
+      GestureDetector(
+        onTap: () {
+          setState(() {
+            pausePLay = !pausePLay;
+          });
+        },
+        child: Container(
+            decoration: BoxDecoration(
+                border: Border.all(width: 1, color: Colors.white)),
+            child: YoutubePlayer(
+              showVideoProgressIndicator: true,
+              controller: YoutubePlayerController(
+                initialVideoId: "hT-UJSD9ZIk",
+                flags: YoutubePlayerFlags(
+                  autoPlay: true,
+                  mute: false,
+                ),
+              ),
+            )),
+      )
+    ];
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Color(0xffD05028),
-        title: Align(
-          child: Text("AMH اهلا بكم في شركه "),
-          alignment: Alignment.topRight,
-        ),
+        title: Text("AMH Group"),
       ),
       backgroundColor: Colors.black,
       body: AnimatedBuilder(
         animation: _animationController,
         builder: (context, _) {
-          _controller = YoutubePlayerController(
+          utubeController = YoutubePlayerController(
             initialVideoId: "hT-UJSD9ZIk",
             flags: YoutubePlayerFlags(autoPlay: true, mute: false),
           );
@@ -83,13 +86,16 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                     Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(25)),
-                      height: 150,
+                      height: 200,
                       child: Swiper(
                         fade: 0.4,
                         scale: 0.5,
+                        onTap: (index) {
+                          print(index);
+                        },
                         viewportFraction: 0.7,
                         itemCount: amhImages.length,
-                        autoplay: true,
+                        autoplay: pausePLay,
                         itemBuilder: (context, index) {
                           return Container(
                             child: amhImages[index],
@@ -121,10 +127,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                             ),
                           ),
                           Divider(),
-                          Divider(),
                           Container(
-                              height: 250,
-                              width: 400,
+                              height: 240,
+                              width: 360,
                               child: Opacity(
                                 opacity: _animationController.value,
                                 child: ListView(
