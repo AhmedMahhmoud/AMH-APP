@@ -135,7 +135,7 @@ class _RoundedSlidableState extends State<RoundedSlidable>
   void initState() {
     // TODO: implement initState
     controllers[widget.index].animationController = AnimationController(
-        vsync: this, duration: Duration(seconds: 1), lowerBound: 0);
+        vsync: this, duration: Duration(milliseconds: 700), lowerBound: 0);
   }
 
   void dispose() {
@@ -215,7 +215,7 @@ class _RoundedSlidableState extends State<RoundedSlidable>
                                 ),
                               ),
                               new AnimatedContainer(
-                                duration: const Duration(seconds: 1),
+                                duration: const Duration(milliseconds: 700),
                                 child: Opacity(
                                   opacity: controllers[widget.index]
                                       .animationController
