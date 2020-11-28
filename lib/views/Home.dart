@@ -61,8 +61,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       appBar: AppBar(
         backgroundColor: Color(0xffD05028),
         title: Align(
-          child: Text("AMH اهلا بكم في شركه "),
-          alignment: Alignment.topRight,
+          child: Text("AMH Group"),
+          alignment: Alignment.center,
         ),
       ),
       backgroundColor: Colors.black,
