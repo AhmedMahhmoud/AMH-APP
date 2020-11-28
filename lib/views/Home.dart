@@ -26,10 +26,11 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
   @override
   void dispose() {
-    utubeController.dispose();
-    _animationController.dispose();
+    
+ 
 
-    super.dispose();
+    super.dispose();  
+     _animationController.dispose();utubeController.dispose();
   }
 
   @override
@@ -67,7 +68,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Color(0xffD05028),
-        title: Text("AMH Group"),
+        title: Align(
+          child: Text("AMH Group"),
+          alignment: Alignment.center,
+        ),
       ),
       backgroundColor: Colors.black,
       body: AnimatedBuilder(

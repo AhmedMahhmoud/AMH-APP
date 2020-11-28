@@ -127,18 +127,20 @@ class MyListTile extends StatelessWidget {
               width: 5,
             ),
             Expanded(
-                flex: 1,
-                child: Transform(
-                  transform: Matrix4.rotationY(math.pi),
-                  alignment: Alignment.center,
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      icon,
-                      color: Color(0xFF3b3c40),
-                    ),
-                  ),
-                )),
+              flex: 1,
+              child:Transform(
+                transform: Matrix4.rotationY(math.pi),
+                alignment: Alignment.center,
+                child: IconButton(
+                  onPressed: (){},
+                  icon:Icon(
+                    icon,
+                    color: Color(0xFF3b3c40),
+
+                ),
+              ),)
+
+            ),
           ],
         ),
       ),
