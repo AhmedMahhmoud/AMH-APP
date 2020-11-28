@@ -9,14 +9,14 @@ class WhoAreWe extends StatelessWidget {
       name: "مهندس محمد علي",
       jobname: "رئيس مجلس الأداره",
       word:
-          " نحن نعتقد اننا وصلنا بنجاح الى مرحلة من الثقة بالنفس. الاحترام و الكرامة. و فخرنا مبني على موظفين على درجة عالية من الكفائة. و مستويات مالية متينة. و على الثقة الممنوحة لنا من العملاء و جميع الناسو دولتنا الحبيبة.",
+          "فى هذه الفترة التى نمر بها جميعا تحتاج مصر إلى العديد من المشروعات الواعدة لبناء دولة حديثة وعصرية ونحن فى ايه ام اتش جروب نجد فى أنفسنا المقدرة على تقديم كافة الخدمات والحلول الابتكارية التى تساهم فى تحقيق الرؤية الوطنية، فنحن نمتلك كافة الأدوات اللازمة التى تجعلنا قادرين على تنفيذ متطلبات كافة عملائنا فى أسرع وقت وبنسبة انجاز تفوق التوقعات. نمتلك أيضاً مجموعة من التحالفات الاقتصادية مع كبرى الشركات الدولية فى العديد من المجالات الهامة مثل مجال تحلية مياه البحر باستخدام أحدث التكنولوجيا ومشروعات الخرسانة الجاهزة للمشروعات القومية الكبرى وغيرها مما يؤكد أننا نسير على طريق التميز بين العديد من الشركات العاملة فى نفس المجال.مستمرون فى تقيدم خدماتنا بامتياز.. فطريق النجاح قد بدأناه ولن نتوقف مهما كانت الصعاب",
     ),
     AmhWords(
       picture: "lib/assets/images/ceo.jpg",
       name: "مهندس احمد فرحان",
       jobname: "المدير التنفيدي",
       word:
-          " ان التزامنا بأعلي المقاييس العامليه لحكومه الشركات و المماراست المهنيه العالميه يبقي دوما في صميم عملنا و بهذا استطعنا ان تطور اسلوبنا في ألأداره و ممارستنا و اجرائتنا بحيث نتمكن من تقديم كل ما هو مميز",
+          " ان التزامنا بأعلي المقاييس العامليه لحكومه الشركات و المماراست المهنيه العالميه يبقي دوما فى صميم عملنا و بهذا استطعنا ان تطور اسلوبنا فى ألأداره و ممارستنا و اجرائتنا بحيث نتمكن من تقديم كل ما هو مميز",
     )
   ];
   @override
@@ -30,17 +30,17 @@ class WhoAreWe extends StatelessWidget {
           alignment: Alignment.bottomRight,
         ),
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(4.0),
             child: Column(
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  height: 250,
+                  height: 420,
                   child: Swiper(
                     itemCount: 2,
                     autoplay: true,
@@ -56,25 +56,11 @@ class WhoAreWe extends StatelessWidget {
                   ),
                   color: Colors.grey.withOpacity(0.2),
                   child: Padding(
-                    padding: EdgeInsets.all(15),
+                    padding: EdgeInsets.all(12),
                     child: Text(
-                      "التأسيس عام 2007 كشركة للمقاولات والتوريدات العامة تخصصت في اعمال (التسويات و الحفر والقطع وأعمال الطرق والرصف أعمال البنية التحتية .اعمال المقاولات العامة والتوريدات العمومية )",
+                      ("ترجع نواة المجموعة إلى عام 2007م حيث تأسست أول شركاتها باسم شركة ايه إم اتش للمقاولات العامة والتوريدات على يد المهندس / محمد علي سعد رئيس مجلس إدارة المجموعة الحالي وتطورت لتبرز نفسها كأحد الشركات الرائدة فى مجال المقاولات والتوريدات العامة بمصر واستطاعت فى فترة وجيزة أن تنفذ عدد لا محدود من المشروعات "),
                       style: TextStyle(
                           color: Colors.white, fontSize: 14, letterSpacing: 1),
-                      textAlign: TextAlign.right,
-                    ),
-                  ),
-                ),
-                Card(
-                  color: Colors.grey.withOpacity(0.2),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0)),
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Text(
-                      "ثم توسعت حجم ألاعمال فتم إنشاء باقي الشركات بالتتابع ليتم التوسع في النشاط ويشمل توريد وتركيب الأنظمة الأمنية . أعمال التشطيبات . تحلية المياة . الأستشارات المالية . الأستشارات الأمنية ونقل الأموال .توريد وتركيب الأنظمه الذكية . الحلول التقنية والبرمجيات وأخيرا الأنشطة الرياضية",
-                      style: TextStyle(
-                          color: Colors.white, fontSize: 16, letterSpacing: 1),
                       textAlign: TextAlign.right,
                     ),
                   ),

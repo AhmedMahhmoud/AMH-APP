@@ -5,8 +5,6 @@ import 'package:flutter_proj/widgets/InformationalCards.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-
-
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
@@ -26,11 +24,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
   @override
   void dispose() {
-    
- 
-
-    super.dispose();  
-     _animationController.dispose();utubeController.dispose();
+    super.dispose();
+    _animationController.dispose();
+    utubeController.dispose();
   }
 
   @override
@@ -170,7 +166,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                       child: InfoCards(
                                         cardname: "هدفنا",
                                         cardinfo:
-                                            "ان نكون في الصدارة في جميع النشاطات وأن نساعد في تطور وتقدم بلدنا الغالية مصر ونصل إلي العالمية",
+                                            "ان نكون في الصدارة في جميع النشاطات وأن نساعد في تطور وتقدم بلدنا الغالية مصر ونصل إلى العالمية",
                                         iconData: Icons.star,
                                       ),
                                     ),
@@ -187,7 +183,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                       child: InfoCards(
                                         cardname: "الرساله",
                                         cardinfo:
-                                            "تحقيق الامتياز في جميع نشاطاتنا من خلال تبني أعلى معايير الحوكمة، والاستثمار في تطوير رأس المال البشري وتشجيع روح الريادة",
+                                            "تحقيق الامتياز في جميع نشاطاتنا من خلال تبني أعلى معايير الحوكمة، والاستثمار في تطوير رأس المال البشرى وتشجيع روح الريادة",
                                         iconData: Icons.work,
                                       ),
                                     )

@@ -67,11 +67,11 @@ class _OurCompaniesScreenState extends State<OurCompaniesScreen> {
       index: 3,
     ),
     RoundedSlidable(
-      name: "النشاط الرياضي",
+      name: "النشاط الرياضى",
       imgPath: "resources/5.png",
       color: 0xff3BAFAC,
       word:
-          "ندير أكاديمية رياضية تتبني المواهب الرياضية معنا افضل المدربين والإمكانيات للوصول باللاعبين الي الاحتراف.",
+          "ندير أكاديمية رياضية تتبنى المواهب الرياضية معنا افضل المدربين والإمكانيات للوصول باللاعبين الى الاحتراف.",
       index: 4,
     ),
   ];
@@ -135,12 +135,13 @@ class _RoundedSlidableState extends State<RoundedSlidable>
   void initState() {
     // TODO: implement initState
     controllers[widget.index].animationController = AnimationController(
-        vsync: this, duration: Duration(milliseconds: 700), lowerBound: 0);
+        vsync: this, duration: Duration(milliseconds: 500), lowerBound: 0);
   }
 
   void dispose() {
     // TODO: implement dispose
     controllers[widget.index].animationController.dispose();
+    controllers[widget.index].animationHeight = 0;
     super.dispose();
   }
 
@@ -215,7 +216,7 @@ class _RoundedSlidableState extends State<RoundedSlidable>
                                 ),
                               ),
                               new AnimatedContainer(
-                                duration: const Duration(milliseconds: 700),
+                                duration: const Duration(milliseconds: 600),
                                 child: Opacity(
                                   opacity: controllers[widget.index]
                                       .animationController
