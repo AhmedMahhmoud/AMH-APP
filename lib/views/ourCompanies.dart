@@ -210,7 +210,7 @@ class _RoundedSlidableState extends State<RoundedSlidable>
                                       color: Color(
                                         widget.color,
                                       ),
-                                      fontSize: 20,
+                                      fontSize: 17,
                                       fontWeight: FontWeight.w700),
                                 ),
                               ),

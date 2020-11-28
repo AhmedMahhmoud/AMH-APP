@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -34,11 +33,10 @@ class InfoCards extends StatelessWidget {
               height: 2,
               color: Colors.white,
             ),
-            textAlign: TextAlign.right,
+            textAlign: TextAlign.center,
           ),
         )
       ],
     );
   }
 }
-
