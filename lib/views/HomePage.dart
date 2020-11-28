@@ -1,5 +1,5 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:flutter/foundation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_proj/views/ContactusScreen.dart';
 import 'package:flutter_proj/views/ourCompanies.dart';
@@ -15,6 +15,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var current = 0;
+  PageController _controller = PageController();
   List<Widget> _screens = [
     Home(),
     OurCompaniesScreen(),
@@ -22,18 +23,27 @@ class _MyHomePageState extends State<MyHomePage> {
     Partners(),
     ContactUsScreen(),
   ];
+  _onPageChange(int indx) {
+    print("on_page_change $indx");
+    setState(() {
+      current = indx;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
         backgroundColor: Colors.black45,
         bottomNavigationBar: CurvedNavigationBar(
           height: 60,
+          index: current,
           buttonBackgroundColor: Colors.white,
           backgroundColor: Color(0xffD05028),
           onTap: (value) {
             setState(() {
+              print("nav bar value $value");
               current = value;
+              _controller.jumpToPage(value);
             });
           },
           items: <Widget>[
@@ -59,69 +69,15 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ),
-        body: _screens[current]);
-  }
-}
-
-class InfoCards extends StatelessWidget {
-  final String cardname;
-  final String cardinfo;
-  final IconData iconData;
-  const InfoCards({
-    this.cardinfo,
-    this.cardname,
-    this.iconData,
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Icon(
-          iconData,
-          color: Color(0xffD05028),
-          size: 30,
-        ),
-        Text(
-          cardname,
-          style: TextStyle(color: Color(0xffDA3444), fontSize: 18),
-        ),
-        Padding(
-          padding: EdgeInsets.all(3),
-          child: Text(
-            cardinfo,
-            style: TextStyle(
-              height: 2,
-              color: Colors.white,
-            ),
-            textAlign: TextAlign.right,
-          ),
-        )
-      ],
-    );
-  }
-}
-
-class AmhImagesWid extends StatelessWidget {
-  final String image;
-  const AmhImagesWid(
-    this.image, {
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(12),
-      child: Container(
-        decoration:
-            BoxDecoration(border: Border.all(color: Colors.white, width: 2)),
-        child: Image(
-          image: AssetImage(image),
-          fit: BoxFit.fill,
-        ),
-      ),
-    );
+        body: PageView.builder(
+          itemBuilder: (context, index) {
+            print("PageViewBuilder $current");
+            return _screens[current];
+          },
+          itemCount: 5,
+          scrollDirection: Axis.horizontal,
+          controller: _controller,
+          onPageChanged: _onPageChange,
+        ));
   }
 }

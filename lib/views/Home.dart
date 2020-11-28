@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_proj/widgets/AmhImageWidget.dart';
+import 'package:flutter_proj/widgets/InformationalCards.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-import 'HomePage.dart';
+
 
 class Home extends StatefulWidget {
   @override
@@ -47,7 +49,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         },
         child: Container(
             decoration: BoxDecoration(
-                border: Border.all(width: 1, color: Colors.white)),
+              border: Border.all(width: 1, color: Colors.white),
+            ),
             child: YoutubePlayer(
               showVideoProgressIndicator: true,
               controller: YoutubePlayerController(
