@@ -20,7 +20,7 @@ class Partners extends StatelessWidget {
           PartnersImages(
             imageLink: "lib/assets/images/partner1.jpg",
           ),
-          PartnersImages(
+          PartnersImagesfill(
             imageLink: "lib/assets/images/p2.jpg",
           ),
           PartnersImages(
@@ -41,7 +41,7 @@ class Partners extends StatelessWidget {
           PartnersImages(
             imageLink: "lib/assets/images/p8.png",
           ),
-          PartnersImages(
+          PartnersImagesfill(
             imageLink: "lib/assets/images/p9.png",
           ),
           PartnersImages(
@@ -49,6 +49,9 @@ class Partners extends StatelessWidget {
           ),
           PartnersImages(
             imageLink: "lib/assets/images/p11.png",
+          ),
+          PartnersImages(
+            imageLink: "lib/assets/images/p12.jpg",
           ),
         ],
       ),
@@ -71,7 +74,35 @@ class PartnersImages extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       height: 200,
       decoration: BoxDecoration(
-          color: Colors.black,
+          color: Colors.white,
+          border: Border.all(color: Colors.black, width: 1),
+          borderRadius: BorderRadius.circular(10),
+          image: DecorationImage(
+            fit: BoxFit.fitHeight,
+            image: AssetImage(
+              imageLink,
+            ),
+          )),
+    );
+  }
+}
+
+class PartnersImagesfill extends StatelessWidget {
+  final String imageLink;
+
+  const PartnersImagesfill({
+    this.imageLink,
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(15),
+      width: MediaQuery.of(context).size.width,
+      height: 200,
+      decoration: BoxDecoration(
+          color: Colors.white,
           border: Border.all(color: Colors.black, width: 1),
           borderRadius: BorderRadius.circular(10),
           image: DecorationImage(
