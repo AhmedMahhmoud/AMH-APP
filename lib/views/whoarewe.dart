@@ -2,7 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_proj/widgets/AmhWordsWidget.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
-class WhoAreWe extends StatelessWidget {
+class WhoAreWe extends StatefulWidget {
+  @override
+  _WhoAreWeState createState() => _WhoAreWeState();
+}
+
+class _WhoAreWeState extends State<WhoAreWe> {
+  int currentWordIndex = 0;
+
   List<Widget> words = [
     AmhWords(
       picture: "lib/assets/images/chairman.jpg",
@@ -19,6 +26,7 @@ class WhoAreWe extends StatelessWidget {
           " ان التزامنا بأعلي المقاييس العامليه لحكومه الشركات و المماراست المهنيه العالميه يبقي دوما فى صميم عملنا و بهذا استطعنا ان تطور اسلوبنا فى ألأداره و ممارستنا و اجرائتنا بحيث نتمكن من تقديم كل ما هو مميز",
     )
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,15 +49,41 @@ class WhoAreWe extends StatelessWidget {
                 Container(
                   width: MediaQuery.of(context).size.width,
                   height: 420,
-                  child: Swiper(
+                  child: PageView.builder(
+                    onPageChanged: (index) {
+                      setState(() {
+                        currentWordIndex = index;
+                      });
+                    },
                     itemCount: 2,
-                    autoplay: true,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
                       return words[index];
                     },
                   ),
                 ),
+                Container(
+                    padding: EdgeInsets.only(left: 10.0),
+                    margin: EdgeInsets.symmetric(vertical: 16),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Container(
+                            child: Row(
+                              children: [
+                                currentWordIndex == 0
+                                    ? CircularIndicator(true)
+                                    : CircularIndicator(false),
+                                SizedBox(
+                                  width: 5.0,
+                                ),
+                                currentWordIndex == 1
+                                    ? CircularIndicator(true)
+                                    : CircularIndicator(false),
+                              ],
+                            ),
+                          ),
+                        ])),
                 Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
@@ -71,5 +105,21 @@ class WhoAreWe extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class CircularIndicator extends StatelessWidget {
+  final bool isIndex;
+  CircularIndicator(this.isIndex);
+
+  Widget build(BuildContext context) {
+    return Container(
+        margin: EdgeInsets.symmetric(horizontal: 2.0),
+        height: isIndex ? 20.0 : 10.0,
+        width: isIndex ? 20.0 : 10.0,
+        decoration: BoxDecoration(
+          color: isIndex ? Color(0xffD05028) : Colors.white,
+          borderRadius: BorderRadius.circular(15),
+        ));
   }
 }
