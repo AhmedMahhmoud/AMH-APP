@@ -60,7 +60,7 @@ class WhoAreWe extends StatelessWidget {
                     child: Text(
                       ("ترجع نواة المجموعة إلى عام 2007م حيث تأسست أول شركاتها باسم شركة ايه إم اتش للمقاولات العامة والتوريدات على يد المهندس / محمد علي سعد رئيس مجلس إدارة المجموعة الحالي وتطورت لتبرز نفسها كأحد الشركات الرائدة فى مجال المقاولات والتوريدات العامة بمصر واستطاعت فى فترة وجيزة أن تنفذ عدد لا محدود من المشروعات "),
                       style: TextStyle(
-                          color: Colors.white, fontSize: 14, letterSpacing: 1),
+                          color: Colors.white, fontSize: 13, letterSpacing: 1),
                       textAlign: TextAlign.right,
                     ),
                   ),

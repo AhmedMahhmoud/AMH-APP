@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_proj/widgets/AmhImageWidget.dart';
 import 'package:flutter_proj/widgets/InformationalCards.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:video_player/video_player.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:chewie/chewie.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -11,12 +13,22 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
+  ChewieController _chewieController;
   YoutubePlayerController utubeController;
+  VideoPlayerController videoPlayerController =
+      VideoPlayerController.asset("lib/assets/videos/amhVideo.mp4");
+  bool looping;
   AnimationController _animationController;
 
   @override
   void initState() {
     super.initState();
+
+    _chewieController = ChewieController(
+        videoPlayerController: videoPlayerController,
+        allowPlaybackSpeedChanging: false,
+        autoPlay: false,
+        looping: true);
     _animationController = AnimationController(
         duration: Duration(seconds: 1), vsync: this, lowerBound: 0);
     _animationController.forward();
@@ -24,9 +36,11 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
   @override
   void dispose() {
-    super.dispose();
     _animationController.dispose();
+    videoPlayerController.dispose();
+    _chewieController.dispose();
     utubeController.dispose();
+    super.dispose();
   }
 
   @override
@@ -39,26 +53,32 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       AmhImagesWid("lib/assets/images/4.png"),
       AmhImagesWid("lib/assets/images/5.png"),
       GestureDetector(
-        onTap: () {
-          setState(() {
-            pausePLay = !pausePLay;
-          });
-        },
+          // onTap: () {
+          //   setState(() {
+          //     pausePLay = !pausePLay;
+          //   });
+          // },
+          child: GestureDetector(
+        onTap: () =>
+            videoPlayerController.value.isPlaying ? print("yes") : print("no"),
         child: Container(
-            decoration: BoxDecoration(
-              border: Border.all(width: 1, color: Colors.white),
-            ),
-            child: YoutubePlayer(
-              showVideoProgressIndicator: true,
-              controller: YoutubePlayerController(
-                initialVideoId: "hT-UJSD9ZIk",
-                flags: YoutubePlayerFlags(
-                  autoPlay: true,
-                  mute: false,
-                ),
-              ),
-            )),
-      )
+            child: GestureDetector(
+          onTap: () {},
+          child: Chewie(
+            controller: _chewieController,
+
+            //   showVideoProgressIndicator: true,
+            //   controller: YoutubePlayerController(
+            //     initialVideoId: "hT-UJSD9ZIk",
+            //     flags: YoutubePlayerFlags(
+            //       autoPlay: false,
+            //       mute: false,
+            //     ),
+            //   ),
+            // )),
+          ),
+        )),
+      ))
     ];
     return Scaffold(
       appBar: AppBar(
@@ -75,7 +95,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         builder: (context, _) {
           utubeController = YoutubePlayerController(
             initialVideoId: "hT-UJSD9ZIk",
-            flags: YoutubePlayerFlags(autoPlay: true, mute: false),
+            flags: YoutubePlayerFlags(autoPlay: false, mute: false),
           );
           return SafeArea(
             child: SingleChildScrollView(
@@ -98,7 +118,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                         },
                         viewportFraction: 0.7,
                         itemCount: amhImages.length,
-                        autoplay: pausePLay,
+                        autoplay: videoPlayerController.value.isPlaying
+                            ? false
+                            : true,
                         itemBuilder: (context, index) {
                           return Container(
                             child: amhImages[index],
@@ -120,7 +142,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                             child: Padding(
                               padding: EdgeInsets.all(10),
                               child: Text(
-                                " الجودة العالية والحلول الإبداعية, المرونة في التنفيذ والتطوير المستمر, .حلول فعالة وذكية للمشاريع المعقدة ,الحفاظ علي ثقة العملاء، ضمان استمرارية التواصل وخدمة ما بعد البيع. هدفنا ان نكون سويا على القمة",
+                                " الجودة العالية والحلول الإبداعية, المرونة فى التنفيذ والتطوير المستمر, .حلول فعالة وذكية للمشاريع المعقدة ,الحفاظ علي ثقة العملاء، ضمان استمرارية التواصل وخدمة ما بعد البيع. هدفنا ان نكون سويا على القمة",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     letterSpacing: 1,
@@ -166,7 +188,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                       child: InfoCards(
                                         cardname: "هدفنا",
                                         cardinfo:
-                                            "ان نكون في الصدارة في جميع النشاطات وأن نساعد في تطور وتقدم بلدنا الغالية مصر ونصل إلى العالمية",
+                                            "ان نكون فى الصدارة فى جميع النشاطات وأن نساعد فى تطور وتقدم بلدنا الغالية مصر ونصل إلى العالمية",
                                         iconData: Icons.star,
                                       ),
                                     ),
@@ -183,7 +205,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                       child: InfoCards(
                                         cardname: "الرساله",
                                         cardinfo:
-                                            "تحقيق الامتياز في جميع نشاطاتنا من خلال تبني أعلى معايير الحوكمة، والاستثمار في تطوير رأس المال البشرى وتشجيع روح الريادة",
+                                            "تحقيق الامتياز فى جميع نشاطاتنا من خلال تبني أعلى معايير الحوكمة، والاستثمار فى تطوير رأس المال البشرى وتشجيع روح الريادة",
                                         iconData: Icons.work,
                                       ),
                                     )

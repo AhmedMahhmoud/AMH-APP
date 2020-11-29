@@ -19,6 +19,9 @@ class AmhWords extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        SizedBox(
+          height: 5,
+        ),
         Container(
           height: 80,
           width: 100,
@@ -43,7 +46,8 @@ class AmhWords extends StatelessWidget {
           padding: const EdgeInsets.only(right: 10, bottom: 10),
           child: Text(
             word,
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(
+                color: Colors.white, fontSize: 13, fontWeight: FontWeight.w700),
             textAlign: TextAlign.center,
           ),
         )

@@ -24,7 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
     ContactUsScreen(),
   ];
   _onPageChange(int indx) {
-    print("on_page_change $indx");
+
     setState(() {
       current = indx;
     });
@@ -48,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: Color(0xffD05028),
           onTap: (value) {
             setState(() {
-              print("nav bar value $value");
+         
               current = value;
               _controller.jumpToPage(value);
             });
@@ -78,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: PageView.builder(
           itemBuilder: (context, index) {
-            print("PageViewBuilder $current");
+      
             return _screens[current];
           },
           itemCount: 5,

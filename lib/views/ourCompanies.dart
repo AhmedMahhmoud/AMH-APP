@@ -78,12 +78,8 @@ class _OurCompaniesScreenState extends State<OurCompaniesScreen> {
   @override
   void dispose() {
     // TODO: implement dispose
-    _controller1.dispose();
-    _controller2.dispose();
-    _controller3.dispose();
-    _controller4.dispose();
-    _controller5.dispose();
-
+    controllers[currentIndex].animationController.reverse();
+    controllers[currentIndex].animationHeight = 0;
     super.dispose();
   }
 
@@ -99,19 +95,21 @@ class _OurCompaniesScreenState extends State<OurCompaniesScreen> {
           ),
         ),
         backgroundColor: Colors.black,
-        body: Container(
-          height: (MediaQuery.of(context).size.height),
-          child: Padding(
-            padding: const EdgeInsets.only(top: 30.0),
-            child: ListView.builder(
-              itemCount: widgets.length,
-              itemBuilder: (context, index) {
-                return widgets[index];
-              },
+        body: GestureDetector(
+          child: Container(
+            height: (MediaQuery.of(context).size.height),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 30.0),
+              child: ListView.builder(
+                itemCount: widgets.length,
+                itemBuilder: (context, index) {
+                  return widgets[index];
+                },
+              ),
+              // child: ListView(
+              //   children: widgets,
+              // ),
             ),
-            // child: ListView(
-            //   children: widgets,
-            // ),
           ),
         ));
   }
@@ -140,8 +138,7 @@ class _RoundedSlidableState extends State<RoundedSlidable>
 
   void dispose() {
     // TODO: implement dispose
-    controllers[widget.index].animationController.dispose();
-    controllers[widget.index].animationHeight = 0;
+
     super.dispose();
   }
 
@@ -152,25 +149,35 @@ class _RoundedSlidableState extends State<RoundedSlidable>
       builder: (context, child) {
         return GestureDetector(
           onTap: () {
-            if (currentIndex == -1) {
-              setState(() {
-                controllers[widget.index].animationController.forward(from: 0);
-                controllers[widget.index].animationHeight = 100;
-                currentIndex = widget.index;
-              });
-            } else {
-              if (currentIndex == widget.index) {
-                controllers[currentIndex].animationController.reverse(from: 1);
-                controllers[currentIndex].animationHeight = 0;
-                currentIndex = -1;
+            setState(() {
+              if (currentIndex == -1) {
+                setState(() {
+                  controllers[widget.index]
+                      .animationController
+                      .forward(from: 0);
+                  controllers[widget.index].animationHeight = 100;
+                  currentIndex = widget.index;
+                });
               } else {
-                controllers[currentIndex].animationController.reverse(from: 1);
-                controllers[currentIndex].animationHeight = 0;
-                controllers[widget.index].animationController.forward(from: 0);
-                controllers[widget.index].animationHeight = 100;
-                currentIndex = widget.index;
+                if (currentIndex == widget.index) {
+                  controllers[currentIndex]
+                      .animationController
+                      .reverse(from: 1);
+                  controllers[currentIndex].animationHeight = 0;
+                  currentIndex = -1;
+                } else {
+                  controllers[currentIndex]
+                      .animationController
+                      .reverse(from: 1);
+                  controllers[currentIndex].animationHeight = 0;
+                  controllers[widget.index]
+                      .animationController
+                      .forward(from: 0);
+                  controllers[widget.index].animationHeight = 100;
+                  currentIndex = widget.index;
+                }
               }
-            }
+            });
           },
           child: SingleChildScrollView(
             child: Column(
