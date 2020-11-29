@@ -155,7 +155,7 @@ class _RoundedSlidableState extends State<RoundedSlidable>
                   controllers[widget.index]
                       .animationController
                       .forward(from: 0);
-                  controllers[widget.index].animationHeight = 100;
+                  controllers[widget.index].animationHeight = 160;
                   currentIndex = widget.index;
                 });
               } else {
@@ -173,7 +173,7 @@ class _RoundedSlidableState extends State<RoundedSlidable>
                   controllers[widget.index]
                       .animationController
                       .forward(from: 0);
-                  controllers[widget.index].animationHeight = 100;
+                  controllers[widget.index].animationHeight = 160;
                   currentIndex = widget.index;
                 }
               }
@@ -236,7 +236,7 @@ class _RoundedSlidableState extends State<RoundedSlidable>
                                 ),
                                 height:
                                     controllers[widget.index].animationHeight,
-                                width: 200.0,
+                                width: 180.0,
                               ),
                             ],
                           ),

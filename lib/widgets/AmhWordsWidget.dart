@@ -43,11 +43,11 @@ class AmhWords extends StatelessWidget {
           style: TextStyle(color: Colors.grey, fontSize: 17),
         ),
         Padding(
-          padding: const EdgeInsets.only(right: 10, bottom: 10),
+          padding: const EdgeInsets.only(right: 10, left: 10),
           child: Text(
             word,
             style: TextStyle(
-                color: Colors.white, fontSize: 13, fontWeight: FontWeight.w700),
+                color: Colors.white, fontSize: 12, fontWeight: FontWeight.w700),
             textAlign: TextAlign.center,
           ),
         )
