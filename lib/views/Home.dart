@@ -13,10 +13,11 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
-  ChewieController _chewieController;
-  YoutubePlayerController utubeController;
-  VideoPlayerController videoPlayerController =
-      VideoPlayerController.asset("lib/assets/videos/amhVideo.mp4");
+  // ChewieController _chewieController;
+  // YoutubePlayerController utubeController;
+  // // SwiperController swiperController;
+  // VideoPlayerController videoPlayerController =
+  //     VideoPlayerController.asset("lib/assets/videos/amhVideo.mp4");
   bool looping;
   AnimationController _animationController;
 
@@ -24,61 +25,71 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
 
-    _chewieController = ChewieController(
-        videoPlayerController: videoPlayerController,
-        allowPlaybackSpeedChanging: false,
-        autoPlay: false,
-        looping: true);
+    // _chewieController = ChewieController(
+    //     videoPlayerController: videoPlayerController,
+    //     allowPlaybackSpeedChanging: false,
+    //     autoPlay: false,
+    //     looping: true);
     _animationController = AnimationController(
         duration: Duration(seconds: 1), vsync: this, lowerBound: 0);
     _animationController.forward();
+    // swiperController = new SwiperController();
+    // swiperController.autoplay = true;
   }
 
   @override
   void dispose() {
     _animationController.dispose();
-    videoPlayerController.dispose();
-    _chewieController.dispose();
-    utubeController.dispose();
+    // videoPlayerController.dispose();
+    // _chewieController.dispose();
+    // utubeController.dispose();
     super.dispose();
   }
 
+  var pausePLay = true;
   @override
   Widget build(BuildContext context) {
-    var pausePLay = true;
     List<Widget> amhImages = [
       GestureDetector(child: AmhImagesWid("lib/assets/images/1.png")),
       AmhImagesWid("lib/assets/images/2.png"),
       AmhImagesWid("lib/assets/images/3.png"),
       AmhImagesWid("lib/assets/images/4.png"),
       AmhImagesWid("lib/assets/images/5.png"),
-      GestureDetector(
-          // onTap: () {
-          //   setState(() {
-          //     pausePLay = !pausePLay;
-          //   });
-          // },
-          child: GestureDetector(
-        onTap: () =>
-            videoPlayerController.value.isPlaying ? print("yes") : print("no"),
-        child: Container(
-            child: GestureDetector(
-          onTap: () {},
-          child: Chewie(
-            controller: _chewieController,
+      AmhImagesWid("lib/assets/images/image1.jpg"),
+      AmhImagesWid("lib/assets/images/image2.jpg"),
+      AmhImagesWid("lib/assets/images/image3.jpeg"),
 
-            //   showVideoProgressIndicator: true,
-            //   controller: YoutubePlayerController(
-            //     initialVideoId: "hT-UJSD9ZIk",
-            //     flags: YoutubePlayerFlags(
-            //       autoPlay: false,
-            //       mute: false,
-            //     ),
-            //   ),
-            // )),
-          ),
-        )),
-      ))
+      // Stack(
+      //   children: [
+      //     Chewie(
+      //       controller: _chewieController,
+      //     ),
+      //     Positioned(
+      //         top: 40,
+      //         left: 80,
+      //         child: GestureDetector(
+      //           onTap: () {
+
+      //             if (pausePLay) {
+      //               // videoPlayerController.play();
+      //               swiperController.autoplay = false;
+      //               _chewieController.play();
+
+      //             } else {
+      //               _chewieController.pause();
+      //               swiperController.autoplay = true;
+
+      //             }
+      //             pausePLay = !(pausePLay);
+      //           },
+      //           child: Container(
+      //             color: Colors.red,
+      //             width: 100,
+      //             height: 70,
+      //           ),
+      //         ))
+      //   ],
+      // )
     ];
     return Scaffold(
       appBar: AppBar(
@@ -93,10 +104,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       body: AnimatedBuilder(
         animation: _animationController,
         builder: (context, _) {
-          utubeController = YoutubePlayerController(
-            initialVideoId: "hT-UJSD9ZIk",
-            flags: YoutubePlayerFlags(autoPlay: false, mute: false),
-          );
+          // utubeController = YoutubePlayerController(
+          //   initialVideoId: "hT-UJSD9ZIk",
+          //   flags: YoutubePlayerFlags(autoPlay: false, mute: false),
+          // );
           return SafeArea(
             child: SingleChildScrollView(
               child: Container(
@@ -111,16 +122,12 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                           borderRadius: BorderRadius.circular(25)),
                       height: 200,
                       child: Swiper(
+                        // controller: swiperController,
                         fade: 0.4,
                         scale: 0.5,
-                        onTap: (index) {
-                          print(index);
-                        },
-                        viewportFraction: 0.7,
+
+                        viewportFraction: 0.7, autoplay: true,
                         itemCount: amhImages.length,
-                        autoplay: videoPlayerController.value.isPlaying
-                            ? false
-                            : true,
                         itemBuilder: (context, index) {
                           return Container(
                             child: amhImages[index],
