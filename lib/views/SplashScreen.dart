@@ -23,11 +23,8 @@ class _SplashScreenState extends State<SplashScreen>
       duration: Duration(milliseconds: 1500),
     );
 
-    animationController.forward();
+    animationController.reverse(from: 1);
 
-    new Timer(new Duration(milliseconds: 2000), () {
-      animationController.reverse();
-    });
     new Timer(new Duration(milliseconds: 3200), () {
       Navigator.push(
           context,
@@ -46,28 +43,20 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(color: Colors.black),
-        child: Stack(
-          alignment: Alignment.center,
-          fit: StackFit.expand,
-          children: <Widget>[
-            FadeTransition(
-              opacity: animationController.drive(
-                CurveTween(curve: Curves.fastOutSlowIn),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    child: Image.asset('lib/assets/images/amh.jpg'),
-                    height: 200,
-                    width: 200,
-                  ),
-                ],
+      backgroundColor: Colors.black,
+      body: FadeTransition(
+        opacity: animationController.drive(
+          CurveTween(curve: Curves.fastOutSlowIn),
+        ),
+        child: Center(
+          child: Container(
+            child: Image(
+              fit: BoxFit.fill,
+              image: AssetImage(
+                "lib/assets/images/amh.jpg",
               ),
             ),
-          ],
+          ),
         ),
       ),
     );

@@ -178,7 +178,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                       child: InfoCards(
                                         cardname: "رؤيتنا",
                                         cardinfo:
-                                            "التوسع جغرافيا وزيادة تنوع الأعمال لنحافظ دوما على مكانتها في مقدمة شركات المقاولات بمنطقة الشرق الأوسط وأفريقيا",
+                                            "التوسع جغرافيا وزيادة تنوع الأعمال لنحافظ دوما على مكانتها فى مقدمة شركات المقاولات بمنطقة الشرق الأوسط وأفريقيا",
                                         iconData: Icons.work,
                                       ),
                                     ),
@@ -192,10 +192,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                           color: Color(0xff343A40),
                                           borderRadius:
                                               BorderRadius.circular(20)),
-                                      child: InfoCards(
+                                      child: GoalsInfoCards(
                                         cardname: "هدفنا",
                                         cardinfo:
-                                            "التوسع في جميع أنشطة الشركة داخل السوق المحلي وخارجه\nأن نستخدم أحدث ما وصلت إليه التكنولوجيا في جميع أعمالنا\nرفع معدلات نسب الانجاز في جميع المشروعات\nريادة الشركات العامله في قطاع التشييد والبناء محلياً ودوليا",
+                                            "ريادة الشركات العامله فى قطاع التشييد والبناء محلياً ودوليا\n\nرفع معدلات نسب الانجاز فى جميع المشروعات\n\nأن نستخدم أحدث ما وصلت إليه التكنولوجيا فى جميع أعمالنا\n \nالتوسع فى جميع أنشطة الشركة داخل السوق المحلى وخارجه",
                                         iconData: Icons.star,
                                       ),
                                     ),
