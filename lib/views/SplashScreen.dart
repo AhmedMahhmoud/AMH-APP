@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen>
     setState(() {
       animationController.reverse();
       Timer(new Duration(milliseconds: 2000), () {
-        Navigator.push(
+        Navigator.pushReplacement(
             context,
             MaterialPageRoute(
               builder: (context) => MyHomePage(),
