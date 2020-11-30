@@ -11,26 +11,32 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
-  Animation<double> animation;
   AnimationController animationController;
+  reverse() {
+    setState(() {
+      animationController.reverse();
+      Timer(new Duration(milliseconds: 2000), () {
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => MyHomePage(),
+            ));
+      });
+    });
+  }
 
   @override
   void initState() {
     super.initState();
-
     animationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 1500),
+      duration: Duration(seconds: 2),
     );
 
     animationController.reverse(from: 1);
 
-    new Timer(new Duration(milliseconds: 3200), () {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => MyHomePage(),
-          ));
+    new Timer(new Duration(milliseconds: 2000), () {
+      reverse();
     });
   }
 
@@ -51,6 +57,7 @@ class _SplashScreenState extends State<SplashScreen>
         child: Center(
           child: Container(
             child: Image(
+              
               fit: BoxFit.fill,
               image: AssetImage(
                 "lib/assets/images/amh.jpg",

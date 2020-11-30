@@ -67,7 +67,7 @@ class _OurCompaniesScreenState extends State<OurCompaniesScreen> {
     ),
     RoundedSlidable(
       name: "إستصلاح الاراضى",
-      imgPath: "resources/5.png",
+      imgPath: "resources/7.jpeg",
       color: 0xff3BAFAC,
       word: "نستخدم أحدث طرق الرى و الاستصلاح في العالم",
       index: 4,
@@ -245,14 +245,14 @@ class _RoundedSlidableState extends State<RoundedSlidable>
                       ),
                     ),
                     Positioned(
-                      left: 10.0,
-                      top: 5.0,
-                      child: Container(
-                        width: 100,
-                        height: 100,
-                        decoration:
-                            const ShapeDecoration(shape: CircleBorder()),
+                        left: 10.0,
+                        top: 5.0,
                         child: Container(
+                          width: 100,
+                          height: 100,
+                          decoration:
+                              const ShapeDecoration(shape: CircleBorder()),
+                          child: Container(
                             width: 100,
                             height: 100,
                             decoration: BoxDecoration(
@@ -262,13 +262,20 @@ class _RoundedSlidableState extends State<RoundedSlidable>
                                   width: 1, color: Color(widget.color)),
                             ),
                             child: Center(
-                                child: CircleAvatar(
-                              backgroundImage: AssetImage(widget.imgPath),
-                              backgroundColor: Colors.white,
-                              radius: 50,
-                            ))),
-                      ),
-                    ),
+                              child: CircleAvatar(
+                                  backgroundColor: Colors.white,
+                                  radius: 50,
+                                  child: Container(
+                                      width: 100,
+                                      decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                            image: AssetImage(widget.imgPath),
+                                            fit: BoxFit.fitWidth,
+                                          ),
+                                          shape: BoxShape.circle))),
+                            ),
+                          ),
+                        ))
                   ],
                 ),
               ],
