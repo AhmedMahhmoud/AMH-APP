@@ -59,19 +59,17 @@ class _OurCompaniesScreenState extends State<OurCompaniesScreen> {
       index: 2,
     ),
     RoundedSlidable(
-      name: "الإستشارات الأمنية ونقل الأموال",
-      imgPath: "resources/4.png",
-      color: 0xffC48155,
-      word:
-          "جميع الإستشارات الأمنية والمالية للشركات والمؤسسات وتنفيذ الأنظمة الأمنية وخدمات نقل الأموال",
+      name: "المستلزمات الطبية",
+      imgPath: "resources/6.png",
+      color: 0xff9CCB3B,
+      word: " الوكيل الحصرى لشركة للمستلزمات الطبية Wellex ",
       index: 3,
     ),
     RoundedSlidable(
-      name: "النشاط الرياضى",
+      name: "إستصلاح الاراضى",
       imgPath: "resources/5.png",
       color: 0xff3BAFAC,
-      word:
-          "ندير أكاديمية رياضية تتبنى المواهب الرياضية معنا افضل المدربين والإمكانيات للوصول باللاعبين الى الاحتراف.",
+      word: "نستخدم أحدث طرق الرى و الاستصلاح في العالم",
       index: 4,
     ),
   ];
@@ -228,10 +226,13 @@ class _RoundedSlidableState extends State<RoundedSlidable>
                                   opacity: controllers[widget.index]
                                       .animationController
                                       .value,
-                                  child: new Text(
-                                    widget.word,
-                                    textAlign: TextAlign.right,
-                                    style: TextStyle(fontSize: 16),
+                                  child: Align(
+                                    alignment: Alignment.topRight,
+                                    child: new Text(
+                                      widget.word,
+                                      textAlign: TextAlign.right,
+                                      style: TextStyle(fontSize: 16),
+                                    ),
                                   ),
                                 ),
                                 height:

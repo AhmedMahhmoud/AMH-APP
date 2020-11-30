@@ -24,11 +24,11 @@ class ContactUsScreen extends StatelessWidget {
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        CircleAvatar(
-                          radius: 50.0,
-                          backgroundColor: Colors.white,
+                        Container(
+                          height: 150,
+                          width: 200,
                           child: Image(
-                            image: AssetImage('resources/group.png'),
+                            image: AssetImage('lib/assets/images/1.png'),
                           ),
                         ),
                         Column(
