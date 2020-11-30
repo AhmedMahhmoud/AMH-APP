@@ -71,6 +71,7 @@ class PartnersImages extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(15),
+      margin: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
       width: MediaQuery.of(context).size.width,
       height: 200,
       decoration: BoxDecoration(
@@ -99,6 +100,7 @@ class PartnersImagesfill extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(15),
+      margin: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
       width: MediaQuery.of(context).size.width,
       height: 200,
       decoration: BoxDecoration(

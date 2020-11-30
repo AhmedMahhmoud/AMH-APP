@@ -28,8 +28,10 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
+       
         backgroundColor: Colors.black,
-        duration: 1000,
+      
+        duration: 1500,
       ),
     );
   }
