@@ -178,7 +178,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                       child: InfoCards(
                                         cardname: "رؤيتنا",
                                         cardinfo:
-                                            "التميز بالقيادة والابداع عبر القطاعات التى نعمل بها، تقديم الخدمات بإتقان ومهنية بشكل يواكب ويفوق تطلعات جميع اصحاب المصلحة",
+                                            "التوسع جغرافيا وزيادة تنوع الأعمال لنحافظ دوما على مكانتها في مقدمة شركات المقاولات بمنطقة الشرق الأوسط وأفريقيا",
                                         iconData: Icons.work,
                                       ),
                                     ),
@@ -186,7 +186,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                       width: 20,
                                     ),
                                     Container(
-                                      width: 200,
+                                      width: 250,
                                       padding: EdgeInsets.all(6),
                                       decoration: BoxDecoration(
                                           color: Color(0xff343A40),
@@ -195,7 +195,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                       child: InfoCards(
                                         cardname: "هدفنا",
                                         cardinfo:
-                                            "ان نكون فى الصدارة فى جميع النشاطات وأن نساعد فى تطور وتقدم بلدنا الغالية مصر ونصل إلى العالمية",
+                                            "التوسع في جميع أنشطة الشركة داخل السوق المحلي وخارجه\nأن نستخدم أحدث ما وصلت إليه التكنولوجيا في جميع أعمالنا\nرفع معدلات نسب الانجاز في جميع المشروعات\nريادة الشركات العامله في قطاع التشييد والبناء محلياً ودوليا",
                                         iconData: Icons.star,
                                       ),
                                     ),
@@ -212,8 +212,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                       child: InfoCards(
                                         cardname: "الرساله",
                                         cardinfo:
-                                            "تحقيق الامتياز فى جميع نشاطاتنا من خلال تبنى أعلى معايير الحوكمة، والاستثمار فى تطوير رأس المال البشرى وتشجيع روح الريادة",
-                                        iconData: Icons.work,
+                                            "هي بناء مشروعات قائمة على أعلى معايير الجودة للجهات التي نعمل معها والسعي إلى الازدهار بتقديم أحدث وسائل العمل",
+                                        iconData: Icons.message,
                                       ),
                                     )
                                   ],

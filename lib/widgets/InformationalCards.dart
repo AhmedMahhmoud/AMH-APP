@@ -14,29 +14,31 @@ class InfoCards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Icon(
-          iconData,
-          color: Color(0xffD05028),
-          size: 30,
-        ),
-        Text(
-          cardname,
-          style: TextStyle(color: Color(0xffDA3444), fontSize: 18),
-        ),
-        Padding(
-          padding: EdgeInsets.all(3),
-          child: Text(
-            cardinfo,
-            style: TextStyle(
-              height: 2,
-              color: Colors.white,
-            ),
-            textAlign: TextAlign.center,
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Icon(
+            iconData,
+            color: Color(0xffD05028),
+            size: 30,
           ),
-        )
-      ],
+          Text(
+            cardname,
+            style: TextStyle(color: Color(0xffDA3444), fontSize: 18),
+          ),
+          Padding(
+            padding: EdgeInsets.all(3),
+            child: Text(
+              cardinfo,
+              style: TextStyle(
+                height: 2,
+                color: Colors.white,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          )
+        ],
+      ),
     );
   }
 }
