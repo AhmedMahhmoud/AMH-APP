@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen>
       duration: Duration(seconds: 2),
     );
 
-    animationController.reverse(from: 1);
+    animationController.forward();
 
     new Timer(new Duration(milliseconds: 2000), () {
       reverse();
@@ -49,21 +49,28 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      body: FadeTransition(
-        opacity: animationController.drive(
-          CurveTween(curve: Curves.fastOutSlowIn),
-        ),
-        child: Center(
-          child: Container(
-            child: Image(
-              
-              fit: BoxFit.fill,
-              image: AssetImage(
-                "lib/assets/images/amh.jpg",
+      body: Container(
+        decoration: BoxDecoration(color: Colors.black),
+        child: Stack(
+          alignment: Alignment.center,
+          fit: StackFit.expand,
+          children: <Widget>[
+            FadeTransition(
+              opacity: animationController.drive(
+                CurveTween(curve: Curves.fastOutSlowIn),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    child: Image.asset('lib/assets/images/amh.jpg'),
+                    height: 200,
+                    width: 200,
+                  ),
+                ],
               ),
             ),
-          ),
+          ],
         ),
       ),
     );
