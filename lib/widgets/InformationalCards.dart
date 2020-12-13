@@ -33,7 +33,7 @@ class InfoCards extends StatelessWidget {
               height: 2,
               color: Colors.white,
             ),
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.right,
           ),
         )
       ],
@@ -75,7 +75,7 @@ class GoalsInfoCards extends StatelessWidget {
                 color: Colors.white,
                 fontSize: 14,
               ),
-              textAlign: TextAlign.center,
+              textAlign: TextAlign.right,
             ),
           )
         ],
