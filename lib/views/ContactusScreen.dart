@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:typicons_flutter/typicons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:math' as math;
@@ -59,9 +60,17 @@ class ContactUsScreen extends StatelessWidget {
                               height: 10.0,
                             ),
                             MyListTile(
-                              title: 'البريد الإلكترونى',
+                              title: 'info@amh-egypt.com',
                               icon: Icons.email,
                               link: 'mailto:info@amh-egypt.com',
+                            ),
+                            SizedBox(
+                              height: 10.0,
+                            ),
+                            MyListTile(
+                              title: "www.amh-egypt.com",
+                              icon: FontAwesomeIcons.globe,
+                              link: 'http://amh-egypt.com/',
                             ),
                           ],
                         ),
