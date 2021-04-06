@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_proj/widgets/AmhWordsWidget.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class WhoAreWe extends StatefulWidget {
   @override
@@ -33,7 +34,9 @@ class _WhoAreWeState extends State<WhoAreWe> {
       appBar: AppBar(
         backgroundColor: Color(0xffD05028),
         title: Align(
-          child: Text("من نحن"),
+          child: InkWell(
+              onTap: () => launch("http://amh-egypt.com/#team"),
+              child: Text("من نحن")),
           alignment: Alignment.bottomRight,
         ),
       ),

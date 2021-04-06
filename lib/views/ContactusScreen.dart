@@ -11,7 +11,9 @@ class ContactUsScreen extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Color(0xffD05028),
           title: Align(
-            child: Text("اتصل بنا"),
+            child: InkWell(
+                onTap: () => launch("http://amh-egypt.com/#contact"),
+                child: Text("اتصل بنا")),
             alignment: Alignment.topRight,
           ),
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class InfoCards extends StatelessWidget {
   final String cardname;
@@ -21,9 +22,17 @@ class InfoCards extends StatelessWidget {
           color: Color(0xffD05028),
           size: 30,
         ),
-        Text(
-          cardname,
-          style: TextStyle(color: Color(0xffDA3444), fontSize: 18),
+        InkWell(
+          onTap: () => launch("http://amh-egypt.com/#about"),
+                  child: Text(
+            cardname,
+            style: TextStyle(
+              color: Color(0xffDA3444),
+              fontSize: 18,
+              decoration: TextDecoration.underline,
+              
+            ),
+          ),
         ),
         Padding(
           padding: EdgeInsets.all(3),
@@ -62,9 +71,15 @@ class GoalsInfoCards extends StatelessWidget {
             color: Color(0xffD05028),
             size: 30,
           ),
-          Text(
-            cardname,
-            style: TextStyle(color: Color(0xffDA3444), fontSize: 19),
+          InkWell(
+            onTap: () => launch("http://amh-egypt.com/#about"),
+            child: Text(
+              cardname,
+              style: TextStyle(
+                  color: Color(0xffDA3444),
+                  fontSize: 19,
+                  decoration: TextDecoration.underline),
+            ),
           ),
           Padding(
             padding: EdgeInsets.all(10),

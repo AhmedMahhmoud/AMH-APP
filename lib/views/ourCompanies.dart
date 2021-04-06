@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 int currentIndex = -1;
 
@@ -88,7 +89,9 @@ class _OurCompaniesScreenState extends State<OurCompaniesScreen> {
         appBar: AppBar(
           backgroundColor: Color(0xffD05028),
           title: Align(
-            child: Text("الشركات التابعة"),
+            child: InkWell(
+                onTap: () => launch("http://amh-egypt.com/#services"),
+                child: Text("الشركات التابعة")),
             alignment: Alignment.topRight,
           ),
         ),

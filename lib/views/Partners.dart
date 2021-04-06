@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Partners extends StatelessWidget {
   @override
@@ -8,7 +9,8 @@ class Partners extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Color(0xffD05028),
         title: Align(
-          child: Text("شركاء النجاح"),
+          child: InkWell(onTap: () => launch("http://amh-egypt.com/#services"),
+            child: Text("شركاء النجاح")),
           alignment: Alignment.topRight,
         ),
       ),
